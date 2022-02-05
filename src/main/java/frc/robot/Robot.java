@@ -47,16 +47,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.MedianFilter;
+import edu.wpi.first.math.filter.MedianFilter;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.ControlType;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 /**
@@ -73,8 +71,9 @@ public class Robot extends TimedRobot {
 
   private static final int deviceID = 40;
   private CANSparkMax m_motor;
-  private CANPIDController m_pidController;
-  private CANEncoder m_encoder;
+  private SparkMaxPIDController m_pidController;
+  private RelativeEncoder m_encoder;
+
   public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
   private double baseY;
   private int UltraPort = 0;
